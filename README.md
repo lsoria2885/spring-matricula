@@ -312,21 +312,3 @@ Se crea y levanta dos contenedores:
 ## Datos iniciales
 Al iniciar, se crean el usuario por defecto:
 - **admin / admin123** (roles: ADMIN, USER)
-
-## Troubleshooting
-- Si el backend no arranca, revisa los logs con:
-  ```bash
-  docker logs matricula_app
-  ```
-- Si MongoDB no responde, revisa los logs con:
-  ```bash
-  docker logs mongodb
-  ```
-- Si cambias el código Java, recuerda recompilar y reconstruir la imagen:
-  ```bash
-  mvn clean package -DskipTests
-  docker compose up -d --build
-  ```
-
-## Licencia
-Proyecto Final Spring Webflux - Luis Soria.
