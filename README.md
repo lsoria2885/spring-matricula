@@ -1,27 +1,28 @@
-# Proyecto Spring Web Flux Matricula
+# Proyecto Spring WebFlux — Matrícula
 
-Proyecto API REST para el control de registros de matrículas, se desarrolla en Spring WebFlux y MongoDB, despliegue con Docker Compose.
+API REST reactiva para controlar matrículas, usando Spring WebFlux y MongoDB. Despliegue con Docker Compose.
 
 ## Características
-- API reactiva para operaciones CRUD de entidades enrollment, student, courses y usuario.
-- Seguridad JWT y rol (admin).
-- Inicialización automática de datos de usuario y roles.
+- CRUD reactivo para **students**, **courses**, **enrollments**.
+- Seguridad **JWT** con roles (admin/user).
+- **DataInitializer** crea usuarios demo y roles.
 - Conexión a MongoDB en contenedor.
 
-## Requisitos previos
-- [Docker y Docker Compose](https://docs.docker.com/get-docker/) instalados.
+## Requisitos
+- Docker y Docker Compose
+- (Opcional) JDK 21 si compilas fuera de Docker
 
-## Pasos para desplegar el proyecto
+## Despliegue
 
-### 1. Clonar repositorio
+### 1) Clonar
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/lsoria2885/spring-matricula.git
 cd spring-matricula
 ```
 
 ### 2. Compilar el proyecto (opcional si solo usas Docker Compose)
 ```bash
-mvn clean package -DskipTests
+./mvnw clean package -DskipTests
 ```
 
 ### 3. Levantar los servicios
@@ -32,9 +33,9 @@ Se crea y levanta dos contenedores:
 - `mongodb`: BDD MongoDB en puerto 27017
 - `matricula_app`: Backend Spring en puerto 8080
 
-## Endpoints disponibles
+## Servicios disponibles
 
-> **Nota:** Cambia `<jwt-token>` por el token real recibido en el login.
+> **Nota:** Cambia `<jwt-token>` por el access_token real recibido en el login.
 
 ### Autenticación
 
@@ -57,7 +58,7 @@ Se crea y levanta dos contenedores:
 - **Respuesta exitosa:**
   ```json
   {
-    "token": "<jwt-token>"
+    "access_token": "<jwt-token>"
   }
   ```
 
@@ -86,22 +87,15 @@ Se crea y levanta dos contenedores:
 - **URL completa:** `http://localhost:8080/v1/courses`
   - **Body ejemplo:**
     ```json
-    {
-      "name": "WebFlux",
-      "initial": "WF",
-      "enabled": true
-    }
+    {"name":"WebFlux","initial":"WF","enabled":true}
+
     ```
 - **Curl:**
   ```bash
-  curl -X POST http://localhost:8080/api/v1/courses \
-    -H "Authorization: Bearer <jwt-token>" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "WebFlux",
-      "initial": "WF",
-      "enabled": true
-    }'
+  curl -X POST http://localhost:8080/v1/courses \
+     -H "Authorization: Bearer <jwt-token>" \
+     -H "Content-Type: application/json" \
+     -d '{"name":"WebFlux","initial":"WF","enabled":true}'
   ```
 
 #### PUT `/v1/courses/{id}`
@@ -116,7 +110,7 @@ Se crea y levanta dos contenedores:
   ```
 - **Curl:**
   ```bash
-  curl -X PUT http://localhost:8080/api/v1/courses/ID_CURSO \
+  curl -X PUT http://localhost:8080/v1/courses/ID_CURSO \
     -H "Authorization: Bearer <jwt-token>" \
     -H "Content-Type: application/json" \
     -d '{"name": "Curso Spring WebFlux","initial": "SWF"}'
@@ -155,7 +149,7 @@ Se crea y levanta dos contenedores:
 - **URL completa:** `http://localhost:8080/v1/students/edad/asc`
 - **Curl:**
   ```bash
-  curl -H "Authorization: Bearer <jwt-token>" http://localhost:8080/api/v2/estudiantes/ordenados/asc
+  curl -H "Authorization: Bearer <jwt-token>" http://localhost:8080/v1/students/edad/asc
   ```
 
 #### GET `/v1/students/edad/desc`
@@ -163,7 +157,7 @@ Se crea y levanta dos contenedores:
 - **URL completa:** `http://localhost:8080/v1/students/edad/desc`
 - **Curl:**
   ```bash
-  curl -H "Authorization: Bearer <jwt-token>" http://localhost:8080/api/v2/estudiantes/ordenados/desc
+  curl -H "Authorization: Bearer <jwt-token>" http://localhost:8080/v1/students/edad/desc
   ```
 
 #### POST `/v1/students`
@@ -171,7 +165,7 @@ Se crea y levanta dos contenedores:
 - **URL completa:** `http://localhost:8080/v1/students`
   - **Body ejemplo:**
     ```json
-    { "firstName":"Pedro", "lastName":"Chávez", "dni":"01010109", "age":40 }
+    {"firstName":"Pedro","lastName":"Chávez","dni":"01010109","age":40}
     ```
 - **Curl:**
   ```bash
@@ -282,7 +276,7 @@ Se crea y levanta dos contenedores:
           "id": "689e8467fd811545a3c4c79c"
       }
   ],
-  "dateEnrollment": "2025-10-06"
+  "dateEnrollment": "2025-11-05T14:00:00""
   }
   ```
 - **Curl:**
@@ -299,7 +293,7 @@ Se crea y levanta dos contenedores:
           "id": "689e8467fd811545a3c4c79c"
       }
   ],
-  "dateEnrollment": "2025-10-06"
+  "dateEnrollment": "2025-11-05T14:00:00"
     }'
   ```
 
@@ -313,7 +307,7 @@ Se crea y levanta dos contenedores:
   ```
 ---
 
-> **Nota:** Todos los endpoints (excepto `/login`) necesitan JWT en el header `Authorization`, el Token se obtiene con el endpoint de login.
+> **Nota:** Todos los endpoints (excepto `/login`) necesitan JWT en el header `Authorization`, el access_token se obtiene con el endpoint de login.
 
 ## Datos iniciales
 Al iniciar, se crean el usuario por defecto:
