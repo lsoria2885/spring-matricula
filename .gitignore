@@ -5,47 +5,13 @@ target/
 *.war
 *.ear
 
-# --- Maven Wrapper (se DEBE versionar) ---
+# --- Maven Wrapper (se versiona) ---
 !.mvn/wrapper/maven-wrapper.jar
 !.mvn/wrapper/maven-wrapper.properties
 mvnw
 mvnw.cmd
 
-# --- IDEs: Eclipse / STS / IntelliJ / VSCode ---
-# Eclipse / STS
-.apt_generated
-.classpath
-.project
-.factorypath
-.settings/
-.springBeans
-.sts4-cache
-
-# IntelliJ
-.idea/
-*.iws
-*.iml
-*.ipr
-
-# VS Code
-.vscode/
-
-# --- NetBeans / Gradle ---
-/nbproject/private/
-# --- Maven / Java ---
-target/
-*.log
-*.jar
-*.war
-*.ear
-
-# --- Maven Wrapper (se DEBE versionar) ---
-!.mvn/wrapper/maven-wrapper.jar
-!.mvn/wrapper/maven-wrapper.properties
-mvnw
-mvnw.cmd
-
-# --- IDEs: Eclipse / STS / IntelliJ / VSCode ---
+# --- IDEs ---
 .apt_generated
 .classpath
 .project
@@ -73,6 +39,7 @@ build/
 .DS_Store
 Thumbs.db
 
-# --- Excepciones para targets dentro de src ---
+# --- Excepciones por si algún plugin genera targets dentro de src ---
 !**/src/main/**/target/
 !**/src/test/**/target/
+
