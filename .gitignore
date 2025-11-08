@@ -1,31 +1,25 @@
-# Directorios de compilación
-/target/
-/bin/
-/out/
+# Maven / Java
+target/
+*.log
 
-# Configuración de IDEs
-/.idea/
-/*.iml
-/.vscode/
-/*.sublime-project
-/*.sublime-workspace
+# IDEs (Eclipse/IntelliJ/VSCode)
+.idea/
+.project
+.classpath
+.settings/
+*.iml
+.factorypath
+.vscode/
 
-# Dependencias
-/.mvn/
-*.jar
-*.war
-*.ear
-
-# Archivos del sistema
+# OS
 .DS_Store
 Thumbs.db
 
-# Credenciales y configuraciones locales
-application.properties
-application.yml
-.env
+# Logs
+logs/
 
-# Archivos de logs
-/logs/
-*.log
+# Artefactos
+*.jar
+*.war
+*.ear
 
