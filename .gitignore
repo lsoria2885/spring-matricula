@@ -1,25 +1,78 @@
-# Maven / Java
+# --- Maven / Java ---
 target/
 *.log
-
-# IDEs (Eclipse/IntelliJ/VSCode)
-.idea/
-.project
-.classpath
-.settings/
-*.iml
-.factorypath
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-logs/
-
-# Artefactos
 *.jar
 *.war
 *.ear
 
+# --- Maven Wrapper (se DEBE versionar) ---
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+# --- IDEs: Eclipse / STS / IntelliJ / VSCode ---
+# Eclipse / STS
+.apt_generated
+.classpath
+.project
+.factorypath
+.settings/
+.springBeans
+.sts4-cache
+
+# IntelliJ
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+# --- NetBeans / Gradle ---
+/nbproject/private/
+# --- Maven / Java ---
+target/
+*.log
+*.jar
+*.war
+*.ear
+
+# --- Maven Wrapper (se DEBE versionar) ---
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+# --- IDEs: Eclipse / STS / IntelliJ / VSCode ---
+.apt_generated
+.classpath
+.project
+.factorypath
+.settings/
+.springBeans
+.sts4-cache
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+# --- NetBeans / Gradle ---
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# --- SO ---
+.DS_Store
+Thumbs.db
+
+# --- Excepciones para targets dentro de src ---
+!**/src/main/**/target/
+!**/src/test/**/target/
