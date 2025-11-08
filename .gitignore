@@ -1,0 +1,31 @@
+# Directorios de compilación
+/target/
+/bin/
+/out/
+
+# Configuración de IDEs
+/.idea/
+/*.iml
+/.vscode/
+/*.sublime-project
+/*.sublime-workspace
+
+# Dependencias
+/.mvn/
+*.jar
+*.war
+*.ear
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Credenciales y configuraciones locales
+application.properties
+application.yml
+.env
+
+# Archivos de logs
+/logs/
+*.log
+
